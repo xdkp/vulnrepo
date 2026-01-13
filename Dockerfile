@@ -8,7 +8,7 @@ RUN npm i --force
 RUN npm run build -- -c production
 
 
-FROM nginx:latest AS ngi
+FROM nginx:1.29.4-trixie AS ngi
 COPY --from=build /app/dist/vulnrepo-app /usr/share/nginx/html
 COPY ./nginx.conf  /etc/nginx/conf.d/default.conf
 EXPOSE 80
